@@ -42,40 +42,40 @@ Benchmarking try with input Small (1 Thousand)...
 
 ##### With input Small (1 Thousand) #####
 Name            ips        average  deviation         median         99th %
-case        19.69 K       50.78 μs    ±27.45%          50 μs          74 μs
-try         19.62 K       50.98 μs    ±40.82%          50 μs          73 μs
-throw       10.20 K       98.03 μs    ±15.25%          92 μs         160 μs
-raise        1.25 K      798.12 μs    ±33.06%         752 μs     1679.59 μs
+case        19.42 K       51.50 μs    ±17.89%          49 μs       83.00 μs
+try         19.02 K       52.58 μs    ±19.48%          50 μs          92 μs
+throw        9.97 K      100.30 μs    ±24.56%          91 μs         192 μs
+raise        1.29 K      775.26 μs    ±29.31%         741 μs     1457.00 μs
 
 Comparison: 
-case        19.69 K
-try         19.62 K - 1.00x slower
-throw       10.20 K - 1.93x slower
-raise        1.25 K - 15.72x slower
+case        19.42 K
+try         19.02 K - 1.02x slower
+throw        9.97 K - 1.95x slower
+raise        1.29 K - 15.05x slower
 
 ##### With input Middle (100 Thousand) #####
 Name            ips        average  deviation         median         99th %
-case         196.27        5.10 ms     ±3.97%        5.03 ms        5.86 ms
-try          194.86        5.13 ms     ±5.37%        5.05 ms        6.46 ms
-throw         97.45       10.26 ms     ±6.06%       10.11 ms       13.15 ms
-raise         14.65       68.25 ms    ±15.78%       63.39 ms      110.69 ms
+try          187.37        5.34 ms     ±7.14%        5.24 ms        6.83 ms
+case         184.46        5.42 ms    ±11.45%        5.22 ms        8.01 ms
+throw         97.25       10.28 ms     ±5.37%       10.24 ms       12.63 ms
+raise         15.21       65.73 ms     ±4.63%       64.91 ms       74.54 ms
 
 Comparison: 
-case         196.27
-try          194.86 - 1.01x slower
-throw         97.45 - 2.01x slower
-raise         14.65 - 13.40x slower
+try          187.37
+case         184.46 - 1.02x slower
+throw         97.25 - 1.93x slower
+raise         15.21 - 12.32x slower
 
 ##### With input Big (10 Million) #####
 Name            ips        average  deviation         median         99th %
-case           1.95         0.51 s     ±0.77%         0.51 s         0.52 s
-try            1.94         0.52 s     ±2.64%         0.51 s         0.55 s
-throw          0.96         1.05 s     ±4.39%         1.02 s         1.12 s
-raise         0.151         6.61 s     ±0.00%         6.61 s         6.61 s
+try            1.89         0.53 s     ±1.64%         0.53 s         0.55 s
+case           1.79         0.56 s     ±2.46%         0.56 s         0.58 s
+throw          0.95         1.05 s     ±3.38%         1.04 s         1.11 s
+raise         0.162         6.18 s     ±0.00%         6.18 s         6.18 s
 
 Comparison: 
-case           1.95
-try            1.94 - 1.01x slower
-throw          0.96 - 2.04x slower
-raise         0.151 - 12.91x slower
+try            1.89
+case           1.79 - 1.05x slower
+throw          0.95 - 1.99x slower
+raise         0.162 - 11.68x slower
 ```

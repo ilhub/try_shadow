@@ -7,6 +7,7 @@ inputs = %{
 Benchee.run %{
   "try" => fn(range) -> Enum.each(range, &TryShadow.to_try/1) end,
   "case" => fn(range) -> Enum.each(range, &TryShadow.to_case/1) end,
+  "with" => fn(range) -> Enum.each(range, &TryShadow.to_with/1) end,
   "throw" => fn(range) -> Enum.each(range, &TryShadow.to_throw/1) end,
   "raise" => fn(range) -> Enum.each(range, &TryShadow.to_raise/1) end,
 }, inputs: inputs

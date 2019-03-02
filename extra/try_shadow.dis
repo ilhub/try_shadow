@@ -1,0 +1,88 @@
+-file("lib/try_shadow.ex", 1).
+
+-module('Elixir.TryShadow').
+
+-compile([no_auto_import]).
+
+-export(['__info__'/1, dumb_worker/1, raise_worker/1,
+	 throw_worker/1, to_case/1, to_raise/1, to_throw/1,
+	 to_try/1, to_with/1]).
+
+-spec '__info__'(attributes | compile | functions |
+		 macros | md5 | module | deprecated) -> any().
+
+'__info__'(module) -> 'Elixir.TryShadow';
+'__info__'(functions) ->
+    [{dumb_worker, 1}, {raise_worker, 1}, {throw_worker, 1},
+     {to_case, 1}, {to_raise, 1}, {to_throw, 1}, {to_try, 1},
+     {to_with, 1}];
+'__info__'(macros) -> [];
+'__info__'(Key = attributes) ->
+    erlang:get_module_info('Elixir.TryShadow', Key);
+'__info__'(Key = compile) ->
+    erlang:get_module_info('Elixir.TryShadow', Key);
+'__info__'(Key = md5) ->
+    erlang:get_module_info('Elixir.TryShadow', Key);
+'__info__'(deprecated) -> [].
+
+dumb_worker(_number@1) when _number@1 rem 2 == 0 ->
+    {error, <<"odds are bad!">>};
+dumb_worker(_number@1) -> {ok, _number@1}.
+
+raise_worker(_number@1) when _number@1 rem 2 == 0 ->
+    erlang:error('Elixir.RuntimeError':exception(<<"odds are bad!">>));
+raise_worker(_number@1) -> _number@1.
+
+throw_worker(_number@1) when _number@1 rem 2 == 0 ->
+    erlang:throw({error, <<"odds are bad!">>});
+throw_worker(_number@1) ->
+    erlang:throw({ok, _number@1}).
+
+to_case(_number@1) ->
+    case dumb_worker(_number@1) of
+      {ok, _number@2} -> _number@2;
+      {error, _reason@1} -> _reason@1
+    end.
+
+to_raise(_number@1) ->
+    try raise_worker(_number@1) catch
+      error:__@2:___STACKTRACE__@1 ->
+	  _e@1 = 'Elixir.Exception':normalize(error, __@2,
+					      case __@2 of
+						__@3
+						    when erlang:tuple_size(__@3)
+							   == 2
+							   andalso
+							   erlang:element(1,
+									  __@3)
+							     == badkey;
+							 __@3 == undef;
+							 __@3 ==
+							   function_clause ->
+						    ___STACKTRACE__@1;
+						_ -> []
+					      end),
+	  _e@1
+    end.
+
+to_throw(_number@1) ->
+    try throw_worker(_number@1) catch
+      throw:{ok, _number@2} -> _number@2;
+      throw:{error, _reason@1} -> _reason@1
+    end.
+
+to_try(_number@1) ->
+    try dumb_worker(_number@1) of
+      {ok, _number@2} -> _number@2;
+      {error, _reason@1} -> _reason@1
+    end.
+
+to_with(_number@1) ->
+    case dumb_worker(_number@1) of
+      {ok, _number@2} -> _number@2;
+      __@1 ->
+	  case __@1 of
+	    {error, _reason@1} -> _reason@1;
+	    __@2 -> erlang:error({with_clause, __@2})
+	  end
+    end.

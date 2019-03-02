@@ -6,6 +6,14 @@ defmodule TryShadow do
     end
   end
 
+  def to_with(number) do
+    with {:ok, number} <- dumb_worker(number) do
+      number
+    else
+      {:error, reason} -> reason
+    end
+  end
+
   def to_try(number) do
     dumb_worker(number)
   else

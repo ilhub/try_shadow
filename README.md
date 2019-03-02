@@ -8,6 +8,14 @@ Benchmarks for `try` and `case` Elixir constructions.
 $ mix run lib/benchmark.exs
 ```
 
+## Disassemble code
+
+```bash
+$ mix disassemble
+```
+
+The code can be found in `./extra/try_shadow.dis`
+
 ## Results
 
 ```

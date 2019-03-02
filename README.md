@@ -32,58 +32,50 @@ time: 5 s
 memory time: 0 ns
 parallel: 1
 inputs: Big (10 Million), Middle (100 Thousand), Small (1 Thousand)
-Estimated total run time: 1.40 min
-
-
-Benchmarking case with input Big (10 Million)...
-Benchmarking case with input Middle (100 Thousand)...
-Benchmarking case with input Small (1 Thousand)...
-Benchmarking raise with input Big (10 Million)...
-Benchmarking raise with input Middle (100 Thousand)...
-Benchmarking raise with input Small (1 Thousand)...
-Benchmarking throw with input Big (10 Million)...
-Benchmarking throw with input Middle (100 Thousand)...
-Benchmarking throw with input Small (1 Thousand)...
-Benchmarking try with input Big (10 Million)...
-Benchmarking try with input Middle (100 Thousand)...
-Benchmarking try with input Small (1 Thousand)...
+Estimated total run time: 1.75 min
 
 ##### With input Small (1 Thousand) #####
 Name            ips        average  deviation         median         99th %
-case        19.42 K       51.50 μs    ±17.89%          49 μs       83.00 μs
-try         19.02 K       52.58 μs    ±19.48%          50 μs          92 μs
-throw        9.97 K      100.30 μs    ±24.56%          91 μs         192 μs
-raise        1.29 K      775.26 μs    ±29.31%         741 μs     1457.00 μs
+try         19.25 K       51.94 μs    ±14.30%       49.99 μs       82.99 μs
+with        18.46 K       54.17 μs    ±22.54%       50.99 μs       99.99 μs
+case        18.45 K       54.20 μs    ±28.60%       48.99 μs       91.99 μs
+throw        9.94 K      100.65 μs    ±37.49%       91.99 μs      197.99 μs
+raise        1.29 K      774.58 μs    ±27.27%      748.99 μs     1321.19 μs
 
 Comparison: 
-case        19.42 K
-try         19.02 K - 1.02x slower
-throw        9.97 K - 1.95x slower
-raise        1.29 K - 15.05x slower
+try         19.25 K
+with        18.46 K - 1.04x slower
+case        18.45 K - 1.04x slower
+throw        9.94 K - 1.94x slower
+raise        1.29 K - 14.91x slower
 
 ##### With input Middle (100 Thousand) #####
 Name            ips        average  deviation         median         99th %
-try          187.37        5.34 ms     ±7.14%        5.24 ms        6.83 ms
-case         184.46        5.42 ms    ±11.45%        5.22 ms        8.01 ms
-throw         97.25       10.28 ms     ±5.37%       10.24 ms       12.63 ms
-raise         15.21       65.73 ms     ±4.63%       64.91 ms       74.54 ms
+case         198.08        5.05 ms     ±5.96%        4.96 ms        6.83 ms
+try          192.84        5.19 ms     ±4.75%        5.11 ms        6.35 ms
+with         191.13        5.23 ms     ±5.23%        5.16 ms        6.05 ms
+throw         95.59       10.46 ms     ±5.02%       10.36 ms       12.28 ms
+raise         15.42       64.86 ms     ±2.57%       64.64 ms       71.17 ms
 
 Comparison: 
-try          187.37
-case         184.46 - 1.02x slower
-throw         97.25 - 1.93x slower
-raise         15.21 - 12.32x slower
+case         198.08
+try          192.84 - 1.03x slower
+with         191.13 - 1.04x slower
+throw         95.59 - 2.07x slower
+raise         15.42 - 12.85x slower
 
 ##### With input Big (10 Million) #####
 Name            ips        average  deviation         median         99th %
-try            1.89         0.53 s     ±1.64%         0.53 s         0.55 s
-case           1.79         0.56 s     ±2.46%         0.56 s         0.58 s
-throw          0.95         1.05 s     ±3.38%         1.04 s         1.11 s
-raise         0.162         6.18 s     ±0.00%         6.18 s         6.18 s
+try            1.91      523.63 ms     ±2.73%      521.14 ms      560.83 ms
+with           1.89      529.23 ms     ±1.56%      525.62 ms      542.41 ms
+case           1.84      542.03 ms     ±5.61%      535.21 ms      598.82 ms
+throw          0.96     1045.53 ms     ±1.24%     1041.83 ms     1067.51 ms
+raise         0.166     6038.49 ms     ±0.00%     6038.49 ms     6038.49 ms
 
 Comparison: 
-try            1.89
-case           1.79 - 1.05x slower
-throw          0.95 - 1.99x slower
-raise         0.162 - 11.68x slower
+try            1.91
+with           1.89 - 1.01x slower
+case           1.84 - 1.04x slower
+throw          0.96 - 2.00x slower
+raise         0.166 - 11.53x slower
 ```
